@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Calendar, Mail, CheckCircle, Loader2 } from "lucide-react";
-import { LinkedinIcon } from "./icons";
+import { Send, Mail, CheckCircle, Loader2 } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "./icons";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -202,20 +202,18 @@ export default function ContactSection() {
           </a>
 
           <a
-            href="https://calendly.com"
+            href="https://github.com/pratikanpat"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-4 p-4 bg-surface border border-border rounded-lg hover:border-cyan/20 hover:bg-surface-hover transition-all"
           >
             <div className="p-2 bg-cyan/5 border border-cyan/10 rounded-md group-hover:border-cyan/30 transition-all">
-              <Calendar size={18} className="text-cyan" />
+              <GithubIcon size={18} className="text-cyan" />
             </div>
             <div>
-              <div className="font-mono text-xs text-muted mb-0.5">
-                SCHEDULE
-              </div>
+              <div className="font-mono text-xs text-muted mb-0.5">GITHUB</div>
               <div className="text-sm text-foreground/80 group-hover:text-cyan transition-colors">
-                Book a conversation
+                github.com/pratikanpat
               </div>
             </div>
           </a>
