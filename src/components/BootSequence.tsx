@@ -5,14 +5,14 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const bootLines = [
   { text: "PRATIK.SYS v2.0", delay: 0 },
-  { text: "Initializing system...", delay: 400 },
-  { text: "", delay: 700 },
-  { text: "> Loading Product Engineering", delay: 900 },
-  { text: "> Loading SaaS Systems", delay: 1200 },
-  { text: "> Loading Startup Experiments", delay: 1500 },
-  { text: "", delay: 1800 },
-  { text: "All systems operational.", delay: 2000 },
-  { text: "STATUS: READY", delay: 2400 },
+  { text: "Initializing system...", delay: 200 },
+  { text: "", delay: 350 },
+  { text: "> Loading Product Engineering", delay: 450 },
+  { text: "> Loading SaaS Systems", delay: 600 },
+  { text: "> Loading Startup Experiments", delay: 750 },
+  { text: "", delay: 900 },
+  { text: "All systems operational.", delay: 1000 },
+  { text: "STATUS: READY", delay: 1200 },
 ];
 
 interface BootSequenceProps {
@@ -56,13 +56,29 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
     return () => clearTimeout(autoSkip);
   }, [onComplete, showEnter]);
 
-  const handleEnter = () => {
+  const handleEnter = useCallback(() => {
     if (typeof window !== "undefined") {
       sessionStorage.setItem("boot-seen", "1");
     }
     setIsExiting(true);
     setTimeout(onComplete, 500);
-  };
+  }, [onComplete]);
+
+  // Handle global Enter key press
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Enter") {
+        if (showEnter) {
+          handleEnter();
+        } else {
+          handleSkip();
+        }
+      }
+    };
+    
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [showEnter, handleEnter, handleSkip]);
 
   return (
     <AnimatePresence>
