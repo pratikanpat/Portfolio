@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PRATIK // SYSTEM — Portfolio
 
-## Getting Started
+A "System Interface / Control Room" portfolio website that positions myself as a systems-oriented product engineer. The site feels like entering a futuristic operating system, focusing on a minimalist and scannable interface.
 
-First, run the development server:
+**Live Domain:** [pratik.kaliprlabs.in](https://pratik.kaliprlabs.in)
+
+## Overview
+
+Unlike traditional portfolios, this one focuses on product building and systems. It features a complete command-line/terminal boot sequence, dynamic status indicators, scroll-spy navigation, and case-study modals for featured products.
+
+## Tech Stack
+
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router, SSG)
+- **Language:** TypeScript
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Icons:** [Lucide React](https://lucide.dev/) + Custom SVGs
+- **Forms/Email:** [Resend](https://resend.com) integration for the contact form
+- **Deploy:** Vercel
+
+## Key Features
+
+- **Boot Sequence:** Terminal-style initialization typing animation (persists in session storage to not annoy returning users).
+- **Smooth Navigation:** Client-side routing with `framer-motion` page transitions and intersection observers for active sidebar sections.
+- **Project Modals:** Expands "Live Systems" into deep-dive case studies without navigating away from the dashboard.
+- **Metrics Panel:** Animated scroll-triggered counters.
+- **Contact API:** Next.js Server Route connected with `@resend/node` for direct email delivery.
+
+## Local Development
+
+1. Clone this repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up environment variables:
+   Create a `.env.local` file in the root and add your Resend API key:
+   ```env
+   RESEND_API_KEY=re_your_api_key_here
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+5. Open [http://localhost:3000](http://localhost:3000)
+
+## Deployment
+
+The project is fully ready for static generation (`build` outputs a static bundle with the dynamic `/api/contact` API route). Recommended deployment platform is **Vercel** for optimal zero-config Next.js compatibility.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Contact
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Email:** pratikanpat89@gmail.com
+- **LinkedIn:** [pratik-anpat](https://linkedin.com/in/pratik-anpat)
+- **GitHub:** [pratikanpat](https://github.com/pratikanpat)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Built with Next.js & Tailwind CSS. All systems operational.*
