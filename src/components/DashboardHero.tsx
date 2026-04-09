@@ -1,16 +1,37 @@
 "use client";
 
+import { useState } from "react";
+
 import { motion } from "framer-motion";
 import {
   MapPin,
   FileDown,
   Mail,
   ArrowDown,
+  BookOpen,
+  X,
+  ChevronRight,
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 
+const kalvoraCaseStudy = {
+  problem:
+    "Creators and freelancers spend hours juggling between multiple tools for proposals, client communication, and invoicing. There's no single platform that handles the full workflow.",
+  whyItMatters:
+    "The creator economy is booming, but the tools haven't caught up. Freelancers lose time and money switching between systems, leading to missed opportunities and unprofessional client experiences.",
+  solution:
+    "Built Kalvora as a unified SaaS platform where creators can manage their entire client lifecycle — from initial proposal generation to final invoice delivery — in one place. Features a clean, intuitive interface designed for non-technical users.",
+  architecture:
+    "React frontend with server-side rendering for SEO. Supabase for auth, database (PostgreSQL), and real-time features. Deployed on Vercel with edge functions for optimal performance. Modular component architecture for rapid feature iteration.",
+  outcome:
+    "Live in production with active users. Continuously iterating on user feedback and scaling acquisition channels. The platform has reduced proposal creation time by 60% for early users.",
+};
+
 export default function DashboardHero() {
+  const [showCaseStudy, setShowCaseStudy] = useState(false);
+
   return (
+    <>
     <section id="dashboard" className="section-container pt-24 lg:pt-20">
       {/* Breadcrumb */}
       <motion.div
@@ -182,14 +203,24 @@ export default function DashboardHero() {
             </div>
           </div>
 
-          <a
-            href="https://kalvora.kaliprlabs.in"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-xs text-cyan hover:underline"
-          >
-            → Launch System
-          </a>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://kalvora.kaliprlabs.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-xs text-cyan hover:underline"
+            >
+              → Launch System
+            </a>
+            <span className="text-border">|</span>
+            <button
+              onClick={() => setShowCaseStudy(true)}
+              className="flex items-center gap-1.5 font-mono text-xs text-foreground/70 hover:text-cyan transition-colors cursor-pointer"
+            >
+              <BookOpen size={12} />
+              Case Study
+            </button>
+          </div>
         </motion.div>
       </div>
 
@@ -209,5 +240,79 @@ export default function DashboardHero() {
         </motion.div>
       </motion.div>
     </section>
+
+    {/* Case Study Modal */}
+    {showCaseStudy && (
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+        onClick={() => setShowCaseStudy(false)}
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          className="relative bg-surface border border-border rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Close */}
+          <button
+            onClick={() => setShowCaseStudy(false)}
+            className="absolute top-4 right-4 text-muted-light hover:text-cyan transition-colors cursor-pointer"
+          >
+            <X size={20} />
+          </button>
+
+          {/* Header */}
+          <div className="mb-6">
+            <div className="font-mono text-[10px] text-cyan tracking-widest mb-2">
+              CASE STUDY
+            </div>
+            <h2 className="text-2xl font-bold">Kalvora</h2>
+            <div className="text-sm text-muted-light mt-1">
+              SaaS Product · Solo Founder · Full-Stack
+            </div>
+          </div>
+
+          {/* Sections */}
+          {[
+            { title: "The Problem", content: kalvoraCaseStudy.problem },
+            { title: "Why It Matters", content: kalvoraCaseStudy.whyItMatters },
+            { title: "The Solution", content: kalvoraCaseStudy.solution },
+            { title: "Architecture", content: kalvoraCaseStudy.architecture },
+            { title: "Outcome", content: kalvoraCaseStudy.outcome },
+          ].map((section) => (
+            <div key={section.title} className="mb-6">
+              <div className="flex items-center gap-2 mb-2">
+                <ChevronRight size={14} className="text-cyan" />
+                <h3 className="font-mono text-sm font-bold text-cyan">
+                  {section.title}
+                </h3>
+              </div>
+              <p className="text-sm text-muted-light leading-relaxed pl-6">
+                {section.content}
+              </p>
+            </div>
+          ))}
+
+          {/* Links */}
+          <div className="flex gap-3 mt-8 pt-6 border-t border-border">
+            <a
+              href="https://kalvora.kaliprlabs.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 font-mono text-xs text-cyan border border-cyan/20 px-4 py-2 rounded hover:bg-cyan/5 transition-all"
+            >
+              → Live Demo
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    )}
+    </>
   );
 }

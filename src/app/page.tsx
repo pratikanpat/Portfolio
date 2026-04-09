@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import BootSequence from "@/components/BootSequence";
+import ScrollProgress from "@/components/ScrollProgress";
 import Sidebar from "@/components/Sidebar";
 import MobileNav from "@/components/MobileNav";
 import DashboardHero from "@/components/DashboardHero";
@@ -91,6 +92,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background grid-bg">
+      {/* Scroll Progress */}
+      <ScrollProgress />
+
       {/* Navigation */}
       <Sidebar activeSection={activeSection} />
       <MobileNav activeSection={activeSection} />
