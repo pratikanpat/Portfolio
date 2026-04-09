@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Calendar, Mail, Linkedin, CheckCircle, Loader2 } from "lucide-react";
+import { Send, Calendar, Mail, CheckCircle, Loader2 } from "lucide-react";
+import { LinkedinIcon } from "./icons";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -188,7 +189,7 @@ export default function ContactSection() {
             className="group flex items-center gap-4 p-4 bg-surface border border-border rounded-lg hover:border-cyan/20 hover:bg-surface-hover transition-all"
           >
             <div className="p-2 bg-cyan/5 border border-cyan/10 rounded-md group-hover:border-cyan/30 transition-all">
-              <Linkedin size={18} className="text-cyan" />
+              <LinkedinIcon size={18} className="text-cyan" />
             </div>
             <div>
               <div className="font-mono text-xs text-muted mb-0.5">

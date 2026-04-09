@@ -11,9 +11,8 @@ import {
   FlaskConical,
   Layers,
   Mail,
-  Github,
-  Linkedin,
 } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "./icons";
 
 const navItems = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -120,7 +119,7 @@ export default function MobileNav({ activeSection }: MobileNavProps) {
                     rel="noopener noreferrer"
                     className="text-muted-light hover:text-cyan transition-colors"
                   >
-                    <Github size={18} />
+                    <GithubIcon size={18} />
                   </a>
                   <a
                     href="https://linkedin.com/in/pratik-anpat"
@@ -128,7 +127,7 @@ export default function MobileNav({ activeSection }: MobileNavProps) {
                     rel="noopener noreferrer"
                     className="text-muted-light hover:text-cyan transition-colors"
                   >
-                    <Linkedin size={18} />
+                    <LinkedinIcon size={18} />
                   </a>
                   <a
                     href="mailto:pratikanpat89@gmail.com"

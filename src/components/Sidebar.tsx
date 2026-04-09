@@ -9,10 +9,9 @@ import {
   FlaskConical,
   Layers,
   Mail,
-  Github,
-  Linkedin,
   ExternalLink,
 } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "./icons";
 
 const navItems = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -118,7 +117,7 @@ export default function Sidebar({ activeSection }: SidebarProps) {
             className="text-muted-light hover:text-cyan transition-colors"
             aria-label="GitHub"
           >
-            <Github size={18} />
+            <GithubIcon size={18} />
           </a>
           <a
             href="https://linkedin.com/in/pratik-anpat"
@@ -127,7 +126,7 @@ export default function Sidebar({ activeSection }: SidebarProps) {
             className="text-muted-light hover:text-cyan transition-colors"
             aria-label="LinkedIn"
           >
-            <Linkedin size={18} />
+            <LinkedinIcon size={18} />
           </a>
           <a
             href="mailto:pratikanpat89@gmail.com"

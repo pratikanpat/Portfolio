@@ -4,11 +4,11 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   ExternalLink,
-  Github,
   BookOpen,
   ChevronRight,
   X,
 } from "lucide-react";
+import { GithubIcon } from "./icons";
 
 export interface Project {
   name: string;
@@ -145,7 +145,7 @@ export default function SystemCard({ project, index }: SystemCardProps) {
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 font-mono text-xs text-foreground/70 hover:text-cyan border border-border px-3 py-1.5 rounded hover:border-cyan/20 hover:bg-cyan/5 transition-all"
             >
-              <Github size={12} />
+              <GithubIcon size={12} />
               Source
             </a>
           )}
@@ -236,7 +236,7 @@ export default function SystemCard({ project, index }: SystemCardProps) {
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 font-mono text-xs text-foreground/70 border border-border px-4 py-2 rounded hover:border-cyan/20 transition-all"
                 >
-                  <Github size={12} />
+                  <GithubIcon size={12} />
                   GitHub
                 </a>
               )}

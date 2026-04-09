@@ -4,11 +4,10 @@ import { motion } from "framer-motion";
 import {
   MapPin,
   FileDown,
-  Github,
-  Linkedin,
   Mail,
   ArrowDown,
 } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "./icons";
 
 export default function DashboardHero() {
   return (
@@ -124,7 +123,7 @@ export default function DashboardHero() {
                 className="p-2 text-muted-light hover:text-cyan border border-border hover:border-cyan/30 rounded transition-all"
                 aria-label="GitHub"
               >
-                <Github size={16} />
+                <GithubIcon size={16} />
               </a>
               <a
                 href="https://linkedin.com/in/pratik-anpat"
@@ -133,7 +132,7 @@ export default function DashboardHero() {
                 className="p-2 text-muted-light hover:text-cyan border border-border hover:border-cyan/30 rounded transition-all"
                 aria-label="LinkedIn"
               >
-                <Linkedin size={16} />
+                <LinkedinIcon size={16} />
               </a>
               <a
                 href="mailto:pratikanpat89@gmail.com"

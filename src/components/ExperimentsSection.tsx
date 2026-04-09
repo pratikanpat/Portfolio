@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import { GithubIcon } from "./icons";
 
 interface Experiment {
   name: string;
@@ -133,7 +134,7 @@ export default function ExperimentsSection() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 font-mono text-[11px] text-muted-light hover:text-cyan transition-colors"
               >
-                <Github size={12} />
+                <GithubIcon size={12} />
                 View Source
               </a>
             )}
