@@ -191,7 +191,7 @@ export default function DashboardHero() {
           <div className="space-y-2 mb-4">
             <div className="flex items-center justify-between font-mono text-xs">
               <span className="text-muted">STACK</span>
-              <span className="text-foreground/80">React · Node · Supabase</span>
+              <span className="text-foreground/80">Next.js · Supabase · Vercel</span>
             </div>
             <div className="flex items-center justify-between font-mono text-xs">
               <span className="text-muted">STATUS</span>

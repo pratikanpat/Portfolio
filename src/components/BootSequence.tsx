@@ -88,14 +88,6 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Skip button */}
-          <button
-            onClick={handleSkip}
-            className="absolute top-6 right-6 font-mono text-xs text-muted-light hover:text-cyan transition-colors cursor-pointer"
-            id="skip-boot"
-          >
-            [ SKIP ]
-          </button>
 
           {/* Scanline effect */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5">
