@@ -185,7 +185,7 @@ export default function DashboardHero() {
 
           <h3 className="font-bold text-lg mb-2">Kalvora</h3>
           <p className="text-sm text-muted-light mb-4 leading-relaxed">
-            SaaS platform that streamlines interior design proposals into branded PDF documents instantly.
+            From Quote to Invoice — in one place. Interior designers fill a form, get a branded PDF, share a link, and auto-generate an invoice the moment the client approves.
           </p>
 
           <div className="space-y-2 mb-4">

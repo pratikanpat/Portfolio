@@ -8,11 +8,11 @@ const projects: Project[] = [
     name: "Kalvora",
     status: "ACTIVE",
     type: "SaaS Product",
-    impact: "Streamlines interior design proposals into branded PDF documents instantly",
+    impact: "Quote → Proposal → Client Approval → Auto-Invoice — built for interior designers",
     role: "Solo Founder · Full-Stack",
     stack: ["Next.js", "React", "Supabase", "Tailwind", "Browserless API", "Vercel"],
     description:
-      "A web tool for interior designers to quickly create structured, professional quotation proposals and generate branded PDF documents.",
+      "Interior designers fill an 8-section form, choose a PDF template, share a magic approval link with the client, and get an invoice auto-generated the moment the client approves — all in one workflow.",
     liveUrl: "https://kalvora.kaliprlabs.in",
     caseStudy: {
       problem:
