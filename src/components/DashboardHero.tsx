@@ -16,15 +16,15 @@ import { GithubIcon, LinkedinIcon } from "./icons";
 
 const kalvoraCaseStudy = {
   problem:
-    "Creators and freelancers spend hours juggling between multiple tools for proposals, client communication, and invoicing. There's no single platform that handles the full workflow.",
+    "Interior designers typically create quotations manually in Word or Excel, losing hours formatting documents and managing scattered revisions.",
   whyItMatters:
-    "The creator economy is booming, but the tools haven't caught up. Freelancers lose time and money switching between systems, leading to missed opportunities and unprofessional client experiences.",
+    "First impressions are critical for design professionals. Sending a poorly formatted Excel sheet undermines a premium brand image, and slow turnaround times can cost them the project.",
   solution:
-    "Built Kalvora as a unified SaaS platform where creators can manage their entire client lifecycle — from initial proposal generation to final invoice delivery — in one place. Features a clean, intuitive interface designed for non-technical users.",
+    "Built a guided, multi-section platform where designers can input client details, rooms, and pricing to instantly generate beautifully styled PDF proposals or share dynamic approval links.",
   architecture:
-    "React frontend with server-side rendering for SEO. Supabase for auth, database (PostgreSQL), and real-time features. Deployed on Vercel with edge functions for optimal performance. Modular component architecture for rapid feature iteration.",
+    "Built on Next.js 14 App Router and Supabase for auth and database. Integrates Browserless via REST API for robust server-side PDF generation. Uses Resend for automated client approval emails.",
   outcome:
-    "Live in production with active users. Continuously iterating on user feedback and scaling acquisition channels. The platform has reduced proposal creation time by 60% for early users.",
+    "Live system featuring short link sharing (e.g., /p/KV-xxxxx), frictionless client approvals that trigger automated invoicing, payment milestone tracking, and a built-in feedback loop.",
 };
 
 export default function DashboardHero() {
@@ -130,7 +130,7 @@ export default function DashboardHero() {
               id="download-resume"
             >
               <FileDown size={14} />
-              <span>EXPORT_CREDENTIALS.PDF</span>
+              <span>EXPORT_RESUME.PDF</span>
               <span className="text-[10px] text-cyan/50 ml-1 hidden group-hover:inline transition-all">
                 ~120KB
               </span>
@@ -185,8 +185,7 @@ export default function DashboardHero() {
 
           <h3 className="font-bold text-lg mb-2">Kalvora</h3>
           <p className="text-sm text-muted-light mb-4 leading-relaxed">
-            Scaling user acquisition for a SaaS platform that streamlines
-            creator-client workflows.
+            SaaS platform that streamlines interior design proposals into branded PDF documents instantly.
           </p>
 
           <div className="space-y-2 mb-4">
