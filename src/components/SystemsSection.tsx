@@ -8,11 +8,11 @@ const projects: Project[] = [
     name: "Kalvora",
     status: "ACTIVE",
     type: "SaaS Product",
-    impact: "Quote → Proposal → Client Approval → Auto-Invoice — built for interior designers",
+    impact: "Quote → Proposal → Client Approval → Auto-Invoice - built for interior designers",
     role: "Solo Founder · Full-Stack",
     stack: ["Next.js", "React", "Supabase", "Tailwind", "Browserless API", "Vercel"],
     description:
-      "Interior designers fill an 8-section form, choose a PDF template, share a magic approval link with the client, and get an invoice auto-generated the moment the client approves — all in one workflow.",
+      "Interior designers fill an 8-section form, choose a PDF template, share a magic approval link with the client, and get an invoice auto-generated the moment the client approves - all in one workflow.",
     liveUrl: "https://kalvora.kaliprlabs.in",
     caseStudy: {
       problem:
@@ -43,7 +43,7 @@ const projects: Project[] = [
       whyItMatters:
         "Efficient routing impacts logistics, urban planning, and infrastructure development. Most existing solutions are proprietary and expensive.",
       solution:
-        "Developed an open-source tool combining FastAPI for the backend API, CLI tools for batch processing, and a lightweight UI for visualization — all powered by OpenStreetMap data.",
+        "Developed an open-source tool combining FastAPI for the backend API, CLI tools for batch processing, and a lightweight UI for visualization - all powered by OpenStreetMap data.",
       architecture:
         "FastAPI handles route computation and serves results via REST endpoints. OSM data is processed and cached locally. CLI tools enable script-based batch analysis. Frontend visualizes routes on interactive maps.",
       outcome:

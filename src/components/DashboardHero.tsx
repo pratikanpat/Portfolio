@@ -86,7 +86,7 @@ export default function DashboardHero() {
             transition={{ delay: 0.4 }}
             className="text-lg text-muted-light max-w-lg leading-relaxed mb-10"
           >
-            I build products that people actually use — from idea to production.
+            I build products that people actually use - from idea to production.
           </motion.p>
 
           {/* Quick Stats Row */}
@@ -185,7 +185,7 @@ export default function DashboardHero() {
 
           <h3 className="font-bold text-lg mb-2">Kalvora</h3>
           <p className="text-sm text-muted-light mb-4 leading-relaxed">
-            From Quote to Invoice — in one place. Interior designers fill a form, get a branded PDF, share a link, and auto-generate an invoice the moment the client approves.
+            From Quote to Invoice - in one place. Interior designers fill a form, get a branded PDF, share a link, and auto-generate an invoice the moment the client approves.
           </p>
 
           <div className="space-y-2 mb-4">

@@ -68,7 +68,7 @@ export default function TechStackSection() {
           Tech I Actually <span className="text-cyan">Use</span>
         </h2>
         <p className="text-muted-light max-w-lg">
-          Not a keyword dump. These are tools I build with — organized by how
+          Not a keyword dump. These are tools I build with - organized by how
           deeply they&apos;re integrated into my workflow.
         </p>
       </motion.div>

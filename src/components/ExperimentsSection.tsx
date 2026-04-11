@@ -41,14 +41,14 @@ const experiments: Experiment[] = [
   {
     name: "FOSSEE UI/UX Enhancement",
     description:
-      "UI/UX improvements for the FOSSEE platform — making educational tools more accessible.",
+      "UI/UX improvements for the FOSSEE platform - making educational tools more accessible.",
     tech: ["Python", "UI/UX", "Research"],
     status: "Complete",
     githubUrl: "https://github.com/pratikanpat/UI-UX-Enhancement-FOSSEE",
   },
   {
     name: "The End Is The Beginning",
-    description: "A cinematic landing page for a book — exploring creative web storytelling.",
+    description: "A cinematic landing page for a book - exploring creative web storytelling.",
     tech: ["HTML", "CSS", "Creative"],
     status: "Complete",
     githubUrl: "https://github.com/pratikanpat/The-End-Is-The-Beginning",
@@ -79,7 +79,7 @@ export default function ExperimentsSection() {
           Lab <span className="text-cyan">Experiments</span>
         </h2>
         <p className="text-muted-light max-w-lg">
-          Side projects, research, and weird builds. Not everything ships — but
+          Side projects, research, and weird builds. Not everything ships - but
           everything teaches.
         </p>
       </motion.div>

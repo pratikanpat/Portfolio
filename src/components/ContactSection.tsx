@@ -221,7 +221,7 @@ export default function ContactSection() {
           {/* Quote */}
           <div className="mt-8 p-4 border-l-2 border-cyan/30">
             <p className="text-sm text-muted-light italic leading-relaxed">
-              &ldquo;I build products that people actually use — from idea to
+              &ldquo;I build products that people actually use - from idea to
               production.&rdquo;
             </p>
           </div>
@@ -237,7 +237,7 @@ export default function ContactSection() {
       >
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="font-mono text-xs text-muted">
-            © {new Date().getFullYear()} PRATIK.SYS — All systems operational
+            © {new Date().getFullYear()} PRATIK.SYS
           </div>
           <div className="font-mono text-xs text-muted">
             Built with Next.js · Deployed on Vercel
