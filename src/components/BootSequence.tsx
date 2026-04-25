@@ -21,13 +21,16 @@ interface BootSequenceProps {
 
 export default function BootSequence({ onComplete }: BootSequenceProps) {
   const [visibleLines, setVisibleLines] = useState<number>(0);
-  const [showEnter, setShowEnter] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
 
-  const handleSkip = useCallback(() => {
+  const handleComplete = useCallback(() => {
+    if (isExiting) return;
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("boot-seen", "1");
+    }
     setIsExiting(true);
     setTimeout(onComplete, 500);
-  }, [onComplete]);
+  }, [onComplete, isExiting]);
 
   useEffect(() => {
     // Check if already seen this session
@@ -36,49 +39,21 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
       return;
     }
 
-    // Auto-skip after 8 seconds
-    const autoSkip = setTimeout(() => {
-      if (!showEnter) {
-        setShowEnter(true);
-      }
-    }, 8000);
-
-    // Show lines progressively
+    // Show lines progressively, then auto-proceed after the last line
     bootLines.forEach((line, i) => {
       setTimeout(() => {
         setVisibleLines(i + 1);
-        if (i === bootLines.length - 1) {
-          setTimeout(() => setShowEnter(true), 400);
-        }
       }, line.delay);
     });
 
-    return () => clearTimeout(autoSkip);
-  }, [onComplete, showEnter]);
+    // Auto-proceed after the animation finishes + a brief pause to read "STATUS: READY"
+    const lastLineDelay = bootLines[bootLines.length - 1].delay;
+    const autoProceed = setTimeout(() => {
+      handleComplete();
+    }, lastLineDelay + 800);
 
-  const handleEnter = useCallback(() => {
-    if (typeof window !== "undefined") {
-      sessionStorage.setItem("boot-seen", "1");
-    }
-    setIsExiting(true);
-    setTimeout(onComplete, 500);
-  }, [onComplete]);
-
-  // Handle global Enter key press
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Enter") {
-        if (showEnter) {
-          handleEnter();
-        } else {
-          handleSkip();
-        }
-      }
-    };
-    
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [showEnter, handleEnter, handleSkip]);
+    return () => clearTimeout(autoProceed);
+  }, [onComplete, handleComplete]);
 
   return (
     <AnimatePresence>
@@ -125,27 +100,6 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
                 <span className="typing-cursor" />
               )}
             </div>
-
-            {/* Enter button */}
-            <AnimatePresence>
-              {showEnter && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-10"
-                >
-                  <button
-                    onClick={handleEnter}
-                    className="group font-mono text-sm border border-cyan/30 text-cyan px-8 py-3 hover:bg-cyan/10 hover:border-cyan/60 transition-all duration-300 cursor-pointer glow-cyan-sm"
-                    id="enter-system"
-                  >
-                    <span className="group-hover:tracking-wider transition-all duration-300">
-                      [ ENTER SYSTEM ]
-                    </span>
-                  </button>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
         </motion.div>
       )}
