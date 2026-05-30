@@ -99,8 +99,8 @@ export default function Home() {
       <Sidebar activeSection={activeSection} />
       <MobileNav activeSection={activeSection} />
 
-      {/* Main Content — offset for sidebar on desktop, for mobile nav on mobile */}
-      <main className="lg:ml-[260px] pt-14 lg:pt-0">
+      {/* Main Content — offset for sidebar on desktop, floating dock clearance on mobile */}
+      <main className="lg:ml-[260px] pb-28 lg:pb-0">
         <DashboardHero />
         <SystemsSection />
         <SystemsThinking />

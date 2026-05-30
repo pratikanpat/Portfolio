@@ -69,7 +69,7 @@ function AnimatedCounter({
   }, [isVisible, target]);
 
   return (
-    <span className="text-4xl md:text-5xl font-bold text-cyan glow-text-cyan tabular-nums">
+    <span className="text-3xl md:text-4xl lg:text-5xl font-bold text-cyan glow-text-cyan tabular-nums">
       {count}
       {suffix}
     </span>
@@ -87,7 +87,7 @@ export default function MetricsPanel() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="mb-12"
+        className="mb-8 lg:mb-12"
       >
         <div className="font-mono text-[11px] text-muted tracking-widest mb-3">
           SYSTEM:// METRICS
@@ -101,7 +101,7 @@ export default function MetricsPanel() {
       </motion.div>
 
       {/* Metrics Grid */}
-      <div ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div ref={ref} className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
         {metrics.map((metric, i) => (
           <motion.div
             key={metric.label}
@@ -109,7 +109,7 @@ export default function MetricsPanel() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="bg-surface border border-border rounded-lg p-6 text-center hover:border-cyan/20 transition-all duration-300"
+            className="bg-surface border border-border rounded-lg p-4 lg:p-6 text-center hover:border-cyan/20 transition-all duration-300"
           >
             <div className="mb-2">
               <AnimatedCounter
@@ -134,9 +134,9 @@ export default function MetricsPanel() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.4 }}
-        className="mt-8 bg-surface border border-border rounded-lg p-6"
+        className="mt-6 lg:mt-8 bg-surface border border-border rounded-lg p-4 lg:p-6"
       >
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
           <div className="flex items-center gap-3">
             <span className="status-dot status-active" />
             <span className="font-mono text-sm text-foreground">

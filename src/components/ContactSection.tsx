@@ -46,7 +46,7 @@ export default function ContactSection() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="mb-12"
+        className="mb-8 lg:mb-12"
       >
         <div className="font-mono text-[11px] text-muted tracking-widest mb-3">
           SYSTEM:// CONTACT
@@ -60,14 +60,14 @@ export default function ContactSection() {
         </p>
       </motion.div>
 
-      <div className="grid lg:grid-cols-[1fr_380px] gap-12">
+      <div className="grid lg:grid-cols-[1fr_380px] gap-8 lg:gap-12">
         {/* Contact Form */}
         <motion.form
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="space-y-5"
+          className="space-y-4 lg:space-y-5"
         >
           <div>
             <label
@@ -119,7 +119,7 @@ export default function ContactSection() {
             <textarea
               id="contact-message"
               required
-              rows={5}
+              rows={4}
               value={formData.message}
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
@@ -162,13 +162,55 @@ export default function ContactSection() {
           transition={{ delay: 0.2 }}
           className="space-y-4"
         >
-          <div className="font-mono text-[11px] text-muted tracking-widest mb-4">
+          {/* Direct channels — compact inline on mobile, stacked cards on desktop */}
+          <div className="font-mono text-[11px] text-muted tracking-widest mb-3 lg:mb-4">
             DIRECT CHANNELS
           </div>
 
+          {/* Mobile: compact icon row */}
+          <div className="flex items-center gap-3 lg:hidden mb-4">
+            <a
+              href="mailto:pratikanpat89@gmail.com"
+              className="flex items-center gap-2.5 px-4 py-2.5 bg-surface border border-border rounded-lg hover:border-cyan/20 transition-all flex-1"
+            >
+              <div className="p-1.5 bg-cyan/5 border border-cyan/10 rounded-md">
+                <Mail size={14} className="text-cyan" />
+              </div>
+              <div className="min-w-0">
+                <div className="font-mono text-[10px] text-muted">EMAIL</div>
+                <div className="text-xs text-foreground/80 truncate">pratikanpat89@gmail.com</div>
+              </div>
+            </a>
+          </div>
+          <div className="flex items-center gap-2 lg:hidden mb-4">
+            <a
+              href="https://linkedin.com/in/pratik-anpat"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-2.5 bg-surface border border-border rounded-lg hover:border-cyan/20 transition-all flex-1"
+            >
+              <div className="p-1.5 bg-cyan/5 border border-cyan/10 rounded-md">
+                <LinkedinIcon size={14} className="text-cyan" />
+              </div>
+              <span className="font-mono text-xs text-foreground/80">LinkedIn</span>
+            </a>
+            <a
+              href="https://github.com/pratikanpat"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-2.5 bg-surface border border-border rounded-lg hover:border-cyan/20 transition-all flex-1"
+            >
+              <div className="p-1.5 bg-cyan/5 border border-cyan/10 rounded-md">
+                <GithubIcon size={14} className="text-cyan" />
+              </div>
+              <span className="font-mono text-xs text-foreground/80">GitHub</span>
+            </a>
+          </div>
+
+          {/* Desktop: stacked cards */}
           <a
             href="mailto:pratikanpat89@gmail.com"
-            className="group flex items-center gap-4 p-4 bg-surface border border-border rounded-lg hover:border-cyan/20 hover:bg-surface-hover transition-all"
+            className="hidden lg:flex group items-center gap-4 p-4 bg-surface border border-border rounded-lg hover:border-cyan/20 hover:bg-surface-hover transition-all"
           >
             <div className="p-2 bg-cyan/5 border border-cyan/10 rounded-md group-hover:border-cyan/30 transition-all">
               <Mail size={18} className="text-cyan" />
@@ -185,7 +227,7 @@ export default function ContactSection() {
             href="https://linkedin.com/in/pratik-anpat"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-4 p-4 bg-surface border border-border rounded-lg hover:border-cyan/20 hover:bg-surface-hover transition-all"
+            className="hidden lg:flex group items-center gap-4 p-4 bg-surface border border-border rounded-lg hover:border-cyan/20 hover:bg-surface-hover transition-all"
           >
             <div className="p-2 bg-cyan/5 border border-cyan/10 rounded-md group-hover:border-cyan/30 transition-all">
               <LinkedinIcon size={18} className="text-cyan" />
@@ -204,7 +246,7 @@ export default function ContactSection() {
             href="https://github.com/pratikanpat"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-4 p-4 bg-surface border border-border rounded-lg hover:border-cyan/20 hover:bg-surface-hover transition-all"
+            className="hidden lg:flex group items-center gap-4 p-4 bg-surface border border-border rounded-lg hover:border-cyan/20 hover:bg-surface-hover transition-all"
           >
             <div className="p-2 bg-cyan/5 border border-cyan/10 rounded-md group-hover:border-cyan/30 transition-all">
               <GithubIcon size={18} className="text-cyan" />
@@ -217,8 +259,8 @@ export default function ContactSection() {
             </div>
           </a>
 
-          {/* Quote */}
-          <div className="mt-8 p-4 border-l-2 border-cyan/30">
+          {/* Quote — desktop only */}
+          <div className="hidden lg:block mt-8 p-4 border-l-2 border-cyan/30">
             <p className="text-sm text-muted-light italic leading-relaxed">
               &ldquo;Building Kalvora. Working with a handful of clients.
               Learning how to build sustainable software businesses.&rdquo;
@@ -232,7 +274,7 @@ export default function ContactSection() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="mt-20 pt-8 border-t border-border"
+        className="mt-12 lg:mt-20 pt-6 lg:pt-8 border-t border-border"
       >
         <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
           <div className="font-mono text-xs text-muted">

@@ -59,7 +59,7 @@ export default function TechStackSection() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="mb-12"
+        className="mb-8 lg:mb-12"
       >
         <div className="font-mono text-[11px] text-muted tracking-widest mb-3">
           SYSTEM:// ACTIVE STACK
@@ -74,7 +74,7 @@ export default function TechStackSection() {
       </motion.div>
 
       {/* Stack Categories */}
-      <div className="space-y-8">
+      <div className="space-y-5 lg:space-y-8">
         {categories.map((cat, catIndex) => {
           const items = techStack.filter((t) => t.category === cat.key);
           return (
@@ -85,13 +85,13 @@ export default function TechStackSection() {
               viewport={{ once: true }}
               transition={{ delay: catIndex * 0.1 }}
             >
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-3 lg:mb-4">
                 <div className="font-mono text-[11px] text-muted tracking-widest">
                   {cat.label}
                 </div>
                 <div className="flex-1 h-px bg-border" />
               </div>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 lg:gap-3">
                 {items.map((tech, i) => (
                   <motion.div
                     key={tech.name}
@@ -99,7 +99,7 @@ export default function TechStackSection() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: catIndex * 0.1 + i * 0.03 }}
-                    className={`font-mono text-sm px-4 py-2 rounded-md border transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/5 hover:text-cyan cursor-default ${cat.color}`}
+                    className={`font-mono text-xs lg:text-sm px-3 py-1.5 lg:px-4 lg:py-2 rounded-md border transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/5 hover:text-cyan cursor-default ${cat.color}`}
                   >
                     {tech.name}
                   </motion.div>

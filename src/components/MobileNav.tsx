@@ -1,10 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Menu,
-  X,
   LayoutDashboard,
   Server,
   Brain,
@@ -12,7 +9,6 @@ import {
   Layers,
   Mail,
 } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "./icons";
 
 const navItems = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -28,119 +24,96 @@ interface MobileNavProps {
 }
 
 export default function MobileNav({ activeSection }: MobileNavProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
   const scrollTo = (id: string) => {
-    setIsOpen(false);
-    setTimeout(() => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }, 300);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
-    <div className="lg:hidden fixed top-0 left-0 right-0 z-50">
-      {/* Top Bar */}
-      <div className="flex items-center justify-between px-4 py-3 bg-background/90 backdrop-blur-md border-b border-border">
-        <div className="font-mono text-sm font-bold text-cyan">
-          PRATIK.SYS
-        </div>
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="p-2 text-muted-light hover:text-cyan transition-colors cursor-pointer"
-          aria-label="Toggle navigation"
-          id="mobile-menu-toggle"
-        >
-          {isOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </div>
-
-      {/* Slide-in menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm"
-              onClick={() => setIsOpen(false)}
+    <div className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+      <motion.div
+        initial={{ opacity: 0, y: 20, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ delay: 0.5, type: "spring", stiffness: 300, damping: 30 }}
+        className="flex items-center gap-1 px-3 py-2.5 rounded-2xl border border-white/8 bg-[#0e0e0e]/85 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.04)]"
+      >
+        {navItems.map((item) => {
+          const isActive = activeSection === item.id;
+          return (
+            <DockItem
+              key={item.id}
+              item={item}
+              isActive={isActive}
+              onPress={() => scrollTo(item.id)}
             />
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 h-full w-[280px] bg-surface border-l border-border p-6 flex flex-col"
-            >
-              <div className="flex items-center justify-between mb-8">
-                <div className="font-mono text-xs text-muted-light tracking-widest">
-                  NAVIGATION
-                </div>
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="text-muted-light hover:text-cyan cursor-pointer"
-                >
-                  <X size={18} />
-                </button>
-              </div>
+          );
+        })}
+      </motion.div>
+    </div>
+  );
+}
 
-              <nav className="flex-1">
-                <ul className="space-y-2">
-                  {navItems.map((item) => {
-                    const isActive = activeSection === item.id;
-                    return (
-                      <li key={item.id}>
-                        <button
-                          onClick={() => scrollTo(item.id)}
-                          className={`w-full flex items-center gap-3 px-4 py-3 rounded-md font-mono text-sm transition-all cursor-pointer ${
-                            isActive
-                              ? "text-cyan bg-cyan/5 border-glow"
-                              : "text-muted-light hover:text-foreground hover:bg-surface-hover"
-                          }`}
-                        >
-                          <item.icon size={16} />
-                          <span>{item.label}</span>
-                        </button>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </nav>
+interface DockItemProps {
+  item: { id: string; label: string; icon: React.ElementType };
+  isActive: boolean;
+  onPress: () => void;
+}
 
-              {/* Social */}
-              <div className="pt-6 border-t border-border">
-                <div className="flex items-center gap-4">
-                  <a
-                    href="https://github.com/pratikanpat"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-light hover:text-cyan transition-colors"
-                  >
-                    <GithubIcon size={18} />
-                  </a>
-                  <a
-                    href="https://linkedin.com/in/pratik-anpat"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-light hover:text-cyan transition-colors"
-                  >
-                    <LinkedinIcon size={18} />
-                  </a>
-                  <a
-                    href="mailto:pratikanpat89@gmail.com"
-                    className="text-muted-light hover:text-cyan transition-colors"
-                  >
-                    <Mail size={18} />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </>
+function DockItem({ item, isActive, onPress }: DockItemProps) {
+  return (
+    <button
+      onClick={onPress}
+      id={`dock-${item.id}`}
+      aria-label={item.label}
+      className="relative flex flex-col items-center justify-center w-11 h-11 rounded-xl transition-all duration-200 cursor-pointer group"
+    >
+      {/* Active background glow */}
+      <AnimatePresence>
+        {isActive && (
+          <motion.div
+            layoutId="dockActive"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ type: "spring", stiffness: 400, damping: 35 }}
+            className="absolute inset-0 rounded-xl bg-cyan/10 border border-cyan/20"
+            style={{ boxShadow: "0 0 12px rgba(0,240,255,0.15)" }}
+          />
         )}
       </AnimatePresence>
-    </div>
+
+      {/* Icon */}
+      <item.icon
+        size={18}
+        className={`relative z-10 transition-all duration-200 ${
+          isActive
+            ? "text-cyan"
+            : "text-[#555] group-hover:text-[#888]"
+        }`}
+        style={isActive ? { filter: "drop-shadow(0 0 6px rgba(0,240,255,0.7))" } : {}}
+      />
+
+      {/* Active dot */}
+      <div className="relative z-10 mt-0.5 h-1">
+        <AnimatePresence>
+          {isActive && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              className="w-1 h-1 rounded-full bg-cyan mx-auto"
+              style={{ boxShadow: "0 0 4px rgba(0,240,255,0.8)" }}
+            />
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Tooltip label on hover/focus */}
+      <span className="absolute -top-9 left-1/2 -translate-x-1/2 font-mono text-[10px] tracking-wider text-cyan bg-[#0e0e0e]/90 border border-cyan/20 px-2 py-1 rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-150">
+        {item.label}
+      </span>
+    </button>
   );
 }

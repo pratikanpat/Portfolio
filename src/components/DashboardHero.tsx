@@ -32,13 +32,13 @@ export default function DashboardHero() {
 
   return (
     <>
-    <section id="dashboard" className="section-container pt-24 lg:pt-20">
+    <section id="dashboard" className="section-container pt-16 lg:pt-20">
       {/* Breadcrumb */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1 }}
-        className="font-mono text-[11px] text-muted tracking-widest mb-8"
+        className="font-mono text-[11px] text-muted tracking-widest mb-4 lg:mb-8"
       >
         SYSTEM:// DASHBOARD / OVERVIEW
       </motion.div>
@@ -62,7 +62,7 @@ export default function DashboardHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="font-mono text-muted-light mb-6 space-y-1"
+            className="font-mono text-muted-light mb-3 lg:mb-6 space-y-1"
           >
             <div className="text-lg">
               Founder,{" "}
@@ -78,7 +78,7 @@ export default function DashboardHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35 }}
-            className="flex items-center gap-2 text-sm text-muted-light mb-8"
+            className="flex items-center gap-2 text-sm text-muted-light mb-4 lg:mb-8"
           >
             <MapPin size={14} className="text-cyan" />
             <span>Pune, India</span>
@@ -89,7 +89,7 @@ export default function DashboardHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-lg text-muted-light max-w-lg leading-relaxed mb-10"
+            className="text-base lg:text-lg text-muted-light max-w-lg leading-relaxed mb-6 lg:mb-10"
           >
             Building products. Shipping for clients. Learning how to build sustainable software businesses.
           </motion.p>
@@ -98,7 +98,7 @@ export default function DashboardHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="flex flex-wrap gap-6 mb-10"
+            className="flex flex-wrap gap-3 lg:gap-6 mb-6 lg:mb-10"
           >
             {[
               { label: "Products", value: "3" },
@@ -107,7 +107,7 @@ export default function DashboardHero() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="px-4 py-3 bg-surface border border-border rounded-md"
+                className="px-3 py-2 lg:px-4 lg:py-3 bg-surface border border-border rounded-md"
               >
                 <div className="font-mono text-xs text-muted mb-1">
                   {stat.label}
@@ -170,12 +170,12 @@ export default function DashboardHero() {
           </motion.div>
         </div>
 
-        {/* Right side — Current Focus Card */}
+        {/* Right side — Current Focus Card (desktop only) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5 }}
-          className="w-full lg:w-[320px] border-glow rounded-lg p-6 bg-surface/50 relative overflow-hidden"
+          className="hidden lg:block w-full lg:w-[320px] border-glow rounded-lg p-6 bg-surface/50 relative overflow-hidden"
         >
           {/* Animated border pulse */}
           <div className="absolute inset-0 rounded-lg border border-cyan/10 animate-pulse pointer-events-none" />
@@ -227,12 +227,36 @@ export default function DashboardHero() {
         </motion.div>
       </div>
 
+      {/* Mobile — compact Current Focus chip */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="lg:hidden mt-4"
+      >
+        <a
+          href="https://kalvora.kaliprlabs.in"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-lg border border-cyan/20 bg-surface/60 hover:bg-surface-hover transition-all group"
+        >
+          <span className="text-sm">🔥</span>
+          <span className="font-mono text-xs text-cyan font-bold tracking-wide">BUILDING</span>
+          <span className="font-mono text-xs text-foreground/80">Kalvora</span>
+          <span className="flex items-center gap-1">
+            <span className="status-dot status-active" style={{ width: 6, height: 6 }} />
+            <span className="font-mono text-[10px] text-success">LIVE</span>
+          </span>
+          <ChevronRight size={12} className="text-muted group-hover:text-cyan transition-colors" />
+        </a>
+      </motion.div>
+
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="flex justify-center mt-16"
+        className="flex justify-center mt-8 lg:mt-16"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

@@ -1,6 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import SystemCard, { type Project } from "./SystemCard";
 
 const projects: Project[] = [
@@ -128,7 +130,91 @@ const projects: Project[] = [
   },
 ];
 
+const statusDotClass: Record<string, string> = {
+  ACTIVE: "status-active",
+  PROTOTYPE: "status-prototype",
+  ARCHIVED: "status-archived",
+  COMPLETE: "status-active",
+};
+
+const statusColor: Record<string, string> = {
+  ACTIVE: "text-success",
+  PROTOTYPE: "text-warning",
+  ARCHIVED: "text-muted",
+  COMPLETE: "text-cyan",
+};
+
+interface CompactCardProps {
+  project: Project;
+  index: number;
+  isExpanded: boolean;
+  onToggle: () => void;
+}
+
+function CompactProjectRow({ project, index, isExpanded, onToggle }: CompactCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-30px" }}
+      transition={{ delay: index * 0.08, duration: 0.4 }}
+      className={`border rounded-lg overflow-hidden transition-colors duration-300 ${
+        isExpanded ? "border-cyan/20" : "border-border"
+      }`}
+    >
+      {/* Compact header row — always visible */}
+      <button
+        onClick={onToggle}
+        className="w-full flex items-center justify-between px-4 py-3.5 bg-surface hover:bg-surface-hover transition-colors cursor-pointer"
+        aria-expanded={isExpanded}
+      >
+        <div className="flex items-center gap-3 min-w-0">
+          <span className={`status-dot shrink-0 ${statusDotClass[project.status]}`} />
+          <span className={`font-bold text-sm truncate transition-colors duration-200 ${isExpanded ? "text-cyan" : ""}`}>{project.name}</span>
+          <span className="hidden sm:block font-mono text-[10px] text-muted truncate">
+            {project.type}
+          </span>
+        </div>
+        <div className="flex items-center gap-3 shrink-0 ml-3">
+          <span className={`font-mono text-[10px] ${statusColor[project.status]}`}>
+            {project.status}
+          </span>
+          <motion.div
+            animate={{ rotate: isExpanded ? 180 : 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+          >
+            <ChevronDown size={14} className={`transition-colors duration-200 ${isExpanded ? "text-cyan" : "text-muted"}`} />
+          </motion.div>
+        </div>
+      </button>
+
+      {/* Expanded full card */}
+      <AnimatePresence initial={false}>
+        {isExpanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="border-t border-border">
+              <SystemCard project={project} index={0} />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
 export default function SystemsSection() {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const handleToggle = (index: number) => {
+    setExpandedIndex((prev) => (prev === index ? null : index));
+  };
+
   return (
     <section id="systems" className="section-container">
       {/* Section Header */}
@@ -136,13 +222,13 @@ export default function SystemsSection() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="mb-12"
+        className="mb-10"
       >
         <div className="font-mono text-[11px] text-muted tracking-widest mb-3">
           SYSTEM:// LIVE SYSTEMS
         </div>
         <h2 className="text-3xl font-bold mb-3">
-          Products & <span className="text-cyan">Systems</span>
+          Products &amp; <span className="text-cyan">Systems</span>
         </h2>
         <p className="text-muted-light max-w-lg">
           Real products solving real problems. Each system designed, built, and
@@ -150,11 +236,33 @@ export default function SystemsSection() {
         </p>
       </motion.div>
 
-      {/* Project Grid */}
-      <div className="grid md:grid-cols-2 gap-6">
+      {/* Desktop: 2-column grid (unchanged) */}
+      <div className="hidden md:grid md:grid-cols-2 gap-6">
         {projects.map((project, i) => (
           <SystemCard key={project.name} project={project} index={i} />
         ))}
+      </div>
+
+      {/* Mobile: First card full + rest as expandable accordion */}
+      <div className="md:hidden space-y-4">
+        {/* First project — full card */}
+        <SystemCard project={projects[0]} index={0} />
+
+        {/* Remaining projects — accordion (one open at a time) */}
+        <div className="space-y-2">
+          <div className="font-mono text-[10px] text-muted tracking-widest pt-2 pb-1">
+            MORE SYSTEMS
+          </div>
+          {projects.slice(1).map((project, i) => (
+            <CompactProjectRow
+              key={project.name}
+              project={project}
+              index={i}
+              isExpanded={expandedIndex === i}
+              onToggle={() => handleToggle(i)}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

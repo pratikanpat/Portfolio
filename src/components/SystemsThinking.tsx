@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import {
   Search,
@@ -52,6 +52,21 @@ const steps = [
 
 export default function SystemsThinking() {
   const [activeStep, setActiveStep] = useState<number | null>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  const handleInteraction = useCallback(
+    (index: number, type: "enter" | "leave" | "tap") => {
+      if (type === "tap") {
+        // Touch device: toggle
+        setIsTouchDevice(true);
+        setActiveStep((prev) => (prev === index ? null : index));
+      } else if (!isTouchDevice) {
+        // Mouse device: hover behavior
+        setActiveStep(type === "enter" ? index : null);
+      }
+    },
+    [isTouchDevice]
+  );
 
   return (
     <section id="thinking" className="section-container">
@@ -60,7 +75,7 @@ export default function SystemsThinking() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="mb-12"
+        className="mb-10 lg:mb-12"
       >
         <div className="font-mono text-[11px] text-muted tracking-widest mb-3">
           SYSTEM:// METHODOLOGY
@@ -75,7 +90,7 @@ export default function SystemsThinking() {
       </motion.div>
 
       {/* Flow Pipeline */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
         {steps.map((step, i) => {
           const isActive = activeStep === i;
           return (
@@ -85,47 +100,48 @@ export default function SystemsThinking() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              onMouseEnter={() => setActiveStep(i)}
-              onMouseLeave={() => setActiveStep(null)}
-              className={`relative p-5 rounded-lg border transition-all duration-300 cursor-default ${
+              onClick={() => handleInteraction(i, "tap")}
+              onMouseEnter={() => handleInteraction(i, "enter")}
+              onMouseLeave={() => handleInteraction(i, "leave")}
+              className={`relative p-4 lg:p-5 rounded-lg border transition-all duration-300 cursor-pointer ${
                 isActive
                   ? "bg-surface-hover border-cyan/30 glow-cyan-sm"
                   : "bg-surface border-border hover:border-border-active"
               }`}
             >
               {/* Step Number */}
-              <div className="absolute top-4 right-4 font-mono text-[10px] text-muted">
+              <div className="absolute top-3 right-3 lg:top-4 lg:right-4 font-mono text-[10px] text-muted">
                 {String(i + 1).padStart(2, "0")}
               </div>
 
               {/* Icon */}
               <div
-                className={`mb-3 transition-colors ${
+                className={`mb-2 lg:mb-3 transition-colors ${
                   isActive ? "text-cyan" : "text-muted"
                 }`}
               >
-                <step.icon size={20} />
+                <step.icon size={18} />
               </div>
 
               {/* Title */}
-              <h3 className="font-mono text-sm font-bold mb-2">{step.title}</h3>
+              <h3 className="font-mono text-xs lg:text-sm font-bold mb-1.5 lg:mb-2">{step.title}</h3>
 
               {/* Description */}
-              <p className="text-xs text-muted-light leading-relaxed mb-3">
+              <p className="text-[11px] lg:text-xs text-muted-light leading-relaxed mb-2 lg:mb-3">
                 {step.description}
               </p>
 
-              {/* Example */}
+              {/* Example — tap to toggle on mobile, hover on desktop */}
               <div
                 className={`overflow-hidden transition-all duration-300 ${
                   isActive ? "max-h-20 opacity-100" : "max-h-0 opacity-0"
                 }`}
               >
-                <div className="pt-3 border-t border-border">
+                <div className="pt-2 lg:pt-3 border-t border-border">
                   <div className="font-mono text-[10px] text-cyan mb-1">
                     REAL EXAMPLE
                   </div>
-                  <p className="text-xs text-foreground/70">{step.example}</p>
+                  <p className="text-[11px] lg:text-xs text-foreground/70">{step.example}</p>
                 </div>
               </div>
             </motion.div>
