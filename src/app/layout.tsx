@@ -15,31 +15,33 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pratik Anpat — Founder, Kalipr Labs",
+  title: "Pratik Anpat — Full Stack Developer & Founder, Kalipr Labs",
   description:
-    "Founder of Kalipr Labs. Building software products and tools. Creator of Kalvora — used by 100+ interior designers across India.",
+    "Full Stack Developer & SaaS Product Builder. Founder of Kalipr Labs. Creator of Kalvora — used by 100+ interior designers across India.",
   keywords: [
     "Pratik Anpat",
     "Kalipr Labs",
     "Founder",
+    "Full Stack Developer",
+    "SaaS Product Builder",
     "Kalvora",
     "Software Products",
     "Pune India",
   ],
   authors: [{ name: "Pratik Anpat" }],
   openGraph: {
-    title: "Pratik Anpat — Founder, Kalipr Labs",
+    title: "Pratik Anpat — Full Stack Developer & Founder, Kalipr Labs",
     description:
-      "Founder of Kalipr Labs. Building software products and tools. Creator of Kalvora.",
+      "Full Stack Developer & SaaS Product Builder. Founder of Kalipr Labs. Creator of Kalvora.",
     url: "https://pratik.kaliprlabs.in",
     siteName: "Pratik Anpat",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pratik Anpat — Founder, Kalipr Labs",
+    title: "Pratik Anpat — Full Stack Developer & Founder, Kalipr Labs",
     description:
-      "Founder of Kalipr Labs. Building software products and tools. Creator of Kalvora.",
+      "Full Stack Developer & SaaS Product Builder. Founder of Kalipr Labs. Creator of Kalvora.",
   },
   robots: {
     index: true,
@@ -66,14 +68,14 @@ export default function RootLayout({
               "@type": "Person",
               name: "Pratik Anpat",
               url: "https://pratik.kaliprlabs.in",
-              jobTitle: "Founder",
+              jobTitle: ["Full Stack Developer", "SaaS Product Builder", "Founder"],
               worksFor: {
                 "@type": "Organization",
                 name: "Kalipr Labs",
                 url: "https://kaliprlabs.in",
               },
               description:
-                "Founder of Kalipr Labs. Building software products and tools. Creator of Kalvora.",
+                "Full Stack Developer & SaaS Product Builder. Founder of Kalipr Labs. Creator of Kalvora.",
               sameAs: [
                 "https://www.linkedin.com/in/pratikanpat",
                 "https://github.com/pratikanpat",

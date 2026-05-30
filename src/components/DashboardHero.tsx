@@ -62,10 +62,15 @@ export default function DashboardHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="font-mono text-lg text-muted-light mb-6"
+            className="font-mono text-muted-light mb-6 space-y-1"
           >
-            Founder,{" "}
-            <a href="https://kaliprlabs.in" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-cyan transition-colors">Kalipr Labs</a>
+            <div className="text-lg">
+              Founder,{" "}
+              <a href="https://kaliprlabs.in" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-cyan transition-colors">Kalipr Labs</a>
+            </div>
+            <div className="text-sm text-muted">
+              Full Stack Developer · SaaS Product Builder
+            </div>
           </motion.div>
 
           {/* Location */}

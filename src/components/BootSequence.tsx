@@ -8,9 +8,10 @@ const bootLines = [
   { text: "Initializing...", delay: 100 },
   { text: "", delay: 200 },
   { text: "> Founder, Kalipr Labs", delay: 250 },
-  { text: "> Creator of Kalvora", delay: 350 },
-  { text: "", delay: 400 },
-  { text: "STATUS: READY", delay: 500 },
+  { text: "> Full Stack Developer · SaaS Product Builder", delay: 300 },
+  { text: "> Creator of Kalvora", delay: 400 },
+  { text: "", delay: 500 },
+  { text: "STATUS: READY", delay: 600 },
 ];
 
 interface BootSequenceProps {
