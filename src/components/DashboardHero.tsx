@@ -32,7 +32,7 @@ export default function DashboardHero() {
 
   return (
     <>
-    <section id="dashboard" className="section-container pt-16 lg:pt-20">
+    <section id="dashboard" className="section-container pt-20 lg:pt-20 min-h-[100dvh] lg:min-h-0 flex flex-col">
       {/* Breadcrumb */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -251,12 +251,12 @@ export default function DashboardHero() {
         </a>
       </motion.div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — pushed to bottom of viewport on mobile */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="flex justify-center mt-8 lg:mt-16"
+        className="flex justify-center mt-auto pt-8 pb-6 lg:mt-16 lg:pt-0 lg:pb-0"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
