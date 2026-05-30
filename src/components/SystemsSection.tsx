@@ -209,7 +209,7 @@ function CompactProjectRow({ project, index, isExpanded, onToggle }: CompactCard
 }
 
 export default function SystemsSection() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
 
   const handleToggle = (index: number) => {
     setExpandedIndex((prev) => (prev === index ? null : index));
@@ -243,26 +243,17 @@ export default function SystemsSection() {
         ))}
       </div>
 
-      {/* Mobile: First card full + rest as expandable accordion */}
-      <div className="md:hidden space-y-4">
-        {/* First project — full card */}
-        <SystemCard project={projects[0]} index={0} />
-
-        {/* Remaining projects — accordion (one open at a time) */}
-        <div className="space-y-2">
-          <div className="font-mono text-[10px] text-muted tracking-widest pt-2 pb-1">
-            MORE SYSTEMS
-          </div>
-          {projects.slice(1).map((project, i) => (
-            <CompactProjectRow
-              key={project.name}
-              project={project}
-              index={i}
-              isExpanded={expandedIndex === i}
-              onToggle={() => handleToggle(i)}
-            />
-          ))}
-        </div>
+      {/* Mobile: unified accordion (one open at a time, Kalvora default) */}
+      <div className="md:hidden space-y-2">
+        {projects.map((project, i) => (
+          <CompactProjectRow
+            key={project.name}
+            project={project}
+            index={i}
+            isExpanded={expandedIndex === i}
+            onToggle={() => handleToggle(i)}
+          />
+        ))}
       </div>
     </section>
   );
