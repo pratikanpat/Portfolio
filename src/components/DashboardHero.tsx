@@ -91,7 +91,7 @@ export default function DashboardHero() {
             transition={{ delay: 0.4 }}
             className="text-lg text-muted-light max-w-lg leading-relaxed mb-10"
           >
-            Building Kalvora. Working with a handful of clients. Learning how to build sustainable software businesses.
+            Building products. Shipping for clients. Learning how to build sustainable software businesses.
           </motion.p>
 
           <motion.div
@@ -101,9 +101,9 @@ export default function DashboardHero() {
             className="flex flex-wrap gap-6 mb-10"
           >
             {[
-              { label: "Product", value: "Kalvora" },
+              { label: "Products", value: "3" },
               { label: "Users", value: "100+" },
-              { label: "Clients", value: "2" },
+              { label: "Clients", value: "3" },
             ].map((stat) => (
               <div
                 key={stat.label}
@@ -213,7 +213,7 @@ export default function DashboardHero() {
               rel="noopener noreferrer"
               className="font-mono text-xs text-cyan hover:underline"
             >
-              → Launch System
+              → Visit Site
             </a>
             <span className="text-border">|</span>
             <button

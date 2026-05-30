@@ -126,7 +126,7 @@ export default function SystemCard({ project, index }: SystemCardProps) {
               className="flex items-center gap-1.5 font-mono text-xs text-cyan hover:text-cyan/80 border border-cyan/20 px-3 py-1.5 rounded hover:bg-cyan/5 transition-all"
             >
               <ExternalLink size={12} />
-              Launch
+              Visit Site
             </a>
           )}
           {project.caseStudy && (
