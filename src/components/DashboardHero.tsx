@@ -64,8 +64,8 @@ export default function DashboardHero() {
             transition={{ delay: 0.3 }}
             className="font-mono text-lg text-muted-light mb-6"
           >
-            Full-Stack Developer &{" "}
-            <span className="text-foreground">SaaS Builder</span>
+            Founder,{" "}
+            <a href="https://kaliprlabs.in" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-cyan transition-colors">Kalipr Labs</a>
           </motion.div>
 
           {/* Location */}
@@ -86,10 +86,9 @@ export default function DashboardHero() {
             transition={{ delay: 0.4 }}
             className="text-lg text-muted-light max-w-lg leading-relaxed mb-10"
           >
-            I build products that people actually use - from idea to production.
+            Building Kalvora. Working with a handful of clients. Learning how to build sustainable software businesses.
           </motion.p>
 
-          {/* Quick Stats Row */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -97,9 +96,9 @@ export default function DashboardHero() {
             className="flex flex-wrap gap-6 mb-10"
           >
             {[
-              { label: "Products Shipped", value: "3+" },
-              { label: "Ideas Tested", value: "10+" },
-              { label: "Current Focus", value: "Kalvora" },
+              { label: "Product", value: "Kalvora" },
+              { label: "Users", value: "100+" },
+              { label: "Clients", value: "2" },
             ].map((stat) => (
               <div
                 key={stat.label}

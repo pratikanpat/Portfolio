@@ -4,15 +4,13 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const bootLines = [
-  { text: "PRATIK.SYS v2.0", delay: 0 },
-  { text: "Initializing system...", delay: 200 },
-  { text: "", delay: 350 },
-  { text: "> Loading Product Engineering", delay: 450 },
-  { text: "> Loading SaaS Systems", delay: 600 },
-  { text: "> Loading Startup Experiments", delay: 750 },
-  { text: "", delay: 900 },
-  { text: "All systems operational.", delay: 1000 },
-  { text: "STATUS: READY", delay: 1200 },
+  { text: "PRATIK.SYS", delay: 0 },
+  { text: "Initializing...", delay: 100 },
+  { text: "", delay: 200 },
+  { text: "> Founder, Kalipr Labs", delay: 250 },
+  { text: "> Creator of Kalvora", delay: 350 },
+  { text: "", delay: 400 },
+  { text: "STATUS: READY", delay: 500 },
 ];
 
 interface BootSequenceProps {
@@ -86,7 +84,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
                       ? "text-cyan glow-text-cyan font-bold mt-2"
                       : line.text.startsWith(">")
                       ? "text-muted-light"
-                      : line.text === "PRATIK.SYS v2.0"
+                      : line.text === "PRATIK.SYS"
                       ? "text-cyan text-lg font-bold"
                       : "text-foreground/70"
                   }

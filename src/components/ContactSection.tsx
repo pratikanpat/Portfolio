@@ -42,7 +42,6 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="section-container">
-      {/* Header */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -53,11 +52,11 @@ export default function ContactSection() {
           SYSTEM:// CONTACT
         </div>
         <h2 className="text-3xl font-bold mb-3">
-          Let&apos;s Build <span className="text-cyan">Something</span>
+          Working on an <span className="text-cyan">Interesting Problem</span>?
         </h2>
         <p className="text-muted-light max-w-lg">
-          Got a product idea? Need a technical co-founder? Working on something
-          ambitious? I&apos;m always open to interesting conversations.
+          Need help building software? Have a project worth solving?
+          Get in touch.
         </p>
       </motion.div>
 
@@ -221,8 +220,8 @@ export default function ContactSection() {
           {/* Quote */}
           <div className="mt-8 p-4 border-l-2 border-cyan/30">
             <p className="text-sm text-muted-light italic leading-relaxed">
-              &ldquo;I build products that people actually use - from idea to
-              production.&rdquo;
+              &ldquo;Building Kalvora. Working with a handful of clients.
+              Learning how to build sustainable software businesses.&rdquo;
             </p>
           </div>
         </motion.div>
@@ -235,13 +234,22 @@ export default function ContactSection() {
         viewport={{ once: true }}
         className="mt-20 pt-8 border-t border-border"
       >
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
           <div className="font-mono text-xs text-muted">
             © {new Date().getFullYear()} PRATIK.SYS
           </div>
           <div className="font-mono text-xs text-muted">
             Built with Next.js · Deployed on Vercel
           </div>
+        </div>
+        <div className="flex flex-wrap items-center gap-4 font-mono text-xs text-muted">
+          <span>Founder of{" "}
+            <a href="https://kaliprlabs.in" target="_blank" rel="noopener noreferrer" className="text-cyan/70 hover:text-cyan transition-colors">Kalipr Labs</a>
+          </span>
+          <span className="text-border">·</span>
+          <span>Creator of{" "}
+            <a href="https://kalvora.kaliprlabs.in" target="_blank" rel="noopener noreferrer" className="text-cyan/70 hover:text-cyan transition-colors">Kalvora</a>
+          </span>
         </div>
       </motion.div>
     </section>

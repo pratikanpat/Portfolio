@@ -15,31 +15,31 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PRATIK // SYSTEM — Product Engineer & SaaS Builder",
+  title: "Pratik Anpat — Founder, Kalipr Labs",
   description:
-    "I build products that people actually use — from idea to production. Full-stack developer, SaaS builder, and systems thinker based in Pune, India.",
+    "Founder of Kalipr Labs. Building software products and tools. Creator of Kalvora — used by 100+ interior designers across India.",
   keywords: [
     "Pratik Anpat",
-    "Product Engineer",
-    "SaaS Builder",
-    "Full Stack Developer",
+    "Kalipr Labs",
+    "Founder",
     "Kalvora",
-    "Portfolio",
+    "Software Products",
+    "Pune India",
   ],
   authors: [{ name: "Pratik Anpat" }],
   openGraph: {
-    title: "PRATIK // SYSTEM — Product Engineer & SaaS Builder",
+    title: "Pratik Anpat — Founder, Kalipr Labs",
     description:
-      "I build products that people actually use — from idea to production.",
+      "Founder of Kalipr Labs. Building software products and tools. Creator of Kalvora.",
     url: "https://pratik.kaliprlabs.in",
     siteName: "Pratik Anpat",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PRATIK // SYSTEM",
+    title: "Pratik Anpat — Founder, Kalipr Labs",
     description:
-      "I build products that people actually use — from idea to production.",
+      "Founder of Kalipr Labs. Building software products and tools. Creator of Kalvora.",
   },
   robots: {
     index: true,
@@ -57,6 +57,31 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Pratik Anpat",
+              url: "https://pratik.kaliprlabs.in",
+              jobTitle: "Founder",
+              worksFor: {
+                "@type": "Organization",
+                name: "Kalipr Labs",
+                url: "https://kaliprlabs.in",
+              },
+              description:
+                "Founder of Kalipr Labs. Building software products and tools. Creator of Kalvora.",
+              sameAs: [
+                "https://www.linkedin.com/in/pratikanpat",
+                "https://github.com/pratikanpat",
+              ],
+            }),
+          }}
+        />
+      </head>
       <body className="min-h-full bg-background text-foreground">{children}</body>
     </html>
   );
