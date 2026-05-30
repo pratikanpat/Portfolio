@@ -32,7 +32,7 @@ export default function DashboardHero() {
 
   return (
     <>
-      <section id="dashboard" className="section-container min-h-screen flex flex-col justify-start relative pt-16 pb-10 lg:pt-0 lg:pb-0">
+      <section id="dashboard" className="section-container lg:min-h-screen flex flex-col justify-start lg:justify-center relative pt-4 pb-6 lg:pt-0 lg:pb-0">
         {/* Breadcrumb */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -256,7 +256,7 @@ export default function DashboardHero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
-          className="absolute bottom-36 lg:bottom-8 left-1/2 -translate-x-1/2"
+          className="mt-8 flex justify-center lg:absolute lg:bottom-8 lg:left-1/2 lg:-translate-x-1/2 lg:mt-0"
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}
